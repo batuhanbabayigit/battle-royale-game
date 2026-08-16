@@ -1,0 +1,95 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; overflow: hidden; background: #0d1b12; font-family: 'Segoe UI', Arial, sans-serif; height: 100%; }
+#game { position: fixed; inset: 0; display: block; touch-action: none; }
+
+.hidden { display: none !important; }
+
+#startScreen {
+  position: fixed; inset: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 50% 30%, #1c3324, #060a08 75%);
+}
+#startScreen .panel {
+  background: rgba(10, 16, 12, 0.85);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 32px 28px;
+  width: min(90vw, 380px);
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+#startScreen h1 {
+  color: #ffdf6b;
+  letter-spacing: 3px;
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+#startScreen .sub { color: #b8c9bd; font-size: 13px; margin-bottom: 20px; line-height: 1.5; }
+#nameInput {
+  width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06); color: #fff; font-size: 15px; margin-bottom: 12px; outline: none;
+}
+#nameInput:focus { border-color: #ffdf6b; }
+#playBtn {
+  width: 100%; padding: 13px; border-radius: 10px; border: none; cursor: pointer;
+  background: linear-gradient(135deg, #ffdf6b, #e8a53a); color: #1a1400; font-weight: 700; font-size: 16px;
+  letter-spacing: 1px;
+}
+#playBtn:hover { filter: brightness(1.08); }
+.hint { color: #7d8f83; font-size: 11px; margin-top: 16px; line-height: 1.6; }
+
+#hud { position: fixed; inset: 0; z-index: 10; pointer-events: none; color: #fff; }
+#topBar {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+#aliveCount {
+  background: rgba(0,0,0,0.45); padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+#waitBanner {
+  background: rgba(255,223,107,0.15); color: #ffdf6b; padding: 6px 16px; border-radius: 999px; font-size: 12px;
+  border: 1px solid rgba(255,223,107,0.3);
+}
+
+#killFeed {
+  position: absolute; top: 16px; right: 16px; display: flex; flex-direction: column; gap: 4px; align-items: flex-end;
+}
+.killItem {
+  background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 6px; font-size: 11px; color: #ffb4b4;
+  border-left: 3px solid #e35b5b;
+}
+
+#minimap {
+  position: absolute; bottom: 16px; right: 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.3);
+}
+
+#bottomBar { position: absolute; bottom: 16px; left: 16px; }
+#hpBarWrap { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 10px; }
+#hpBar { width: 160px; height: 14px; background: rgba(255,255,255,0.12); border-radius: 999px; overflow: hidden; }
+#hpFill { height: 100%; width: 100%; background: linear-gradient(90deg, #4be86b, #2fbf55); transition: width 0.15s ease; }
+#weaponLabel { font-size: 13px; font-weight: 700; color: #ffdf6b; white-space: nowrap; }
+
+#overlay {
+  position: fixed; inset: 0; z-index: 15; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.55); color: #fff; text-align: center;
+}
+#overlayText { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #ffdf6b; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+#overlaySub { font-size: 14px; color: #d5e0d8; margin-top: 10px; }
+
+#touchControls { display: none; }
+#touchControls.visible { display: block; }
+#joystick {
+  position: fixed; left: 24px; bottom: 24px; width: 110px; height: 110px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); z-index: 12;
+}
+#joystickKnob {
+  position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%;
+  background: rgba(255,223,107,0.7);
+}
+#shootBtn {
+  position: fixed; right: 28px; bottom: 40px; width: 84px; height: 84px; border-radius: 50%;
+  background: rgba(227,91,91,0.55); border: 1px solid rgba(255,255,255,0.3); color: #fff; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; font-size: 13px; z-index: 12; user-select: none;
+}
