@@ -1,13 +1,16 @@
 {
-    "name": "br-game",
-    "version": "1.0.0",
-    "description": "2D top-down online battle royale (PUBG style) - Node + Socket.io",
-    "main": "server.js",
-    "scripts": {
-          "start": "node server.js"
-    },
-    "dependencies": {
-          "express": "^4.19.2",
-          "socket.io": "^4.7.5"
-    }
+  "name": "br-game",
+  "version": "2.0.0",
+  "description": "2D top-down online battle royale (PUBG style) - Node + Socket.io + auth + shop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cookie-parser": "^1.4.6"
+  }
 }
