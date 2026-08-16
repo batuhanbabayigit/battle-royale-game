@@ -9,14 +9,75 @@
 <body>
 
 <canvas id="game"></canvas>
+<canvas id="fx"></canvas>
 
 <div id="startScreen">
   <div class="panel">
-    <h1>SON AYAKTA</h1>
+    <div class="logo">
+      <h1>SON AYAKTA</h1>
+      <div class="logoGlow"></div>
+    </div>
     <p class="sub">2D online battle royale — daralan alan, silah topla, son ayakta kalan kazanır.</p>
-    <input id="nameInput" maxlength="16" placeholder="Oyuncu adın" autocomplete="off">
-    <button id="playBtn">OYNA</button>
+
+    <div id="authBox">
+      <div id="loggedOutView">
+        <div class="tabRow">
+          <button class="tabBtn active" data-tab="guest">Misafir</button>
+          <button class="tabBtn" data-tab="login">Giriş</button>
+          <button class="tabBtn" data-tab="register">Kayıt Ol</button>
+        </div>
+
+        <div class="tabPane" id="tab-guest">
+          <input id="nameInput" maxlength="16" placeholder="Oyuncu adın" autocomplete="off">
+          <button id="playBtn" class="primaryBtn">OYNA</button>
+        </div>
+
+        <div class="tabPane hidden" id="tab-login">
+          <input id="loginUser" maxlength="16" placeholder="Kullanıcı adı" autocomplete="username">
+          <input id="loginPass" type="password" maxlength="64" placeholder="Şifre" autocomplete="current-password">
+          <button id="loginBtn" class="primaryBtn">GİRİŞ YAP</button>
+          <div class="authMsg" id="loginMsg"></div>
+        </div>
+
+        <div class="tabPane hidden" id="tab-register">
+          <input id="regUser" maxlength="16" placeholder="Kullanıcı adı (3-16)" autocomplete="username">
+          <input id="regPass" type="password" maxlength="64" placeholder="Şifre (en az 4 karakter)" autocomplete="new-password">
+          <button id="regBtn" class="primaryBtn">HESAP OLUŞTUR</button>
+          <div class="authMsg" id="regMsg"></div>
+        </div>
+      </div>
+
+      <div id="loggedInView" class="hidden">
+        <div id="profileCard">
+          <div id="profileName">-</div>
+          <div id="profileCoins">💰 0</div>
+        </div>
+        <button id="playLoggedInBtn" class="primaryBtn">OYNA</button>
+        <button id="shopBtn" class="secondaryBtn">🛒 Mağaza</button>
+        <button id="logoutBtn" class="linkBtn">Çıkış yap</button>
+      </div>
+    </div>
+
     <div class="hint">WASD / oklar: hareket · Fare: nişan al &amp; tıkla ateş et · Mobilde: sol joystick + ateş butonu</div>
+  </div>
+</div>
+
+<div id="shopModal" class="hidden">
+  <div class="shopPanel">
+    <div class="shopHeader">
+      <h2>Mağaza</h2>
+      <button id="closeShop" class="closeBtn">✕</button>
+    </div>
+    <div class="shopCoins">Bakiyen: <span id="shopCoinCount">0</span> 💰</div>
+    <div class="shopSection">
+      <h3>Görünümler</h3>
+      <div id="skinGrid" class="skinGrid"></div>
+    </div>
+    <div class="shopSection">
+      <h3>Coin Paketleri (gerçek para)</h3>
+      <div id="coinPackGrid" class="coinPackGrid"></div>
+      <div class="shopNote">Ödeme altyapısı site sahibinin kendi ödeme sağlayıcısına bağlanmasıyla aktif olacak.</div>
+    </div>
   </div>
 </div>
 
@@ -26,13 +87,17 @@
     <div id="waitBanner" class="hidden"></div>
   </div>
   <div id="killFeed"></div>
+  <div id="scoreboard"></div>
   <canvas id="minimap" width="150" height="150"></canvas>
   <div id="bottomBar">
     <div id="hpBarWrap">
+      <div class="hpIcon">❤</div>
       <div id="hpBar"><div id="hpFill"></div></div>
+      <div id="armorBar"><div id="armorFill"></div></div>
       <div id="weaponLabel">Tabanca</div>
     </div>
   </div>
+  <button id="muteBtn">🔊</button>
 </div>
 
 <div id="overlay" class="hidden">
