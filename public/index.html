@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Son Ayakta - Battle Royale</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="game"></canvas>
+
+<div id="startScreen">
+  <div class="panel">
+    <h1>SON AYAKTA</h1>
+    <p class="sub">2D online battle royale — daralan alan, silah topla, son ayakta kalan kazanır.</p>
+    <input id="nameInput" maxlength="16" placeholder="Oyuncu adın" autocomplete="off">
+    <button id="playBtn">OYNA</button>
+    <div class="hint">WASD / oklar: hareket · Fare: nişan al &amp; tıkla ateş et · Mobilde: sol joystick + ateş butonu</div>
+  </div>
+</div>
+
+<div id="hud" class="hidden">
+  <div id="topBar">
+    <div id="aliveCount">-- hayatta</div>
+    <div id="waitBanner" class="hidden"></div>
+  </div>
+  <div id="killFeed"></div>
+  <canvas id="minimap" width="150" height="150"></canvas>
+  <div id="bottomBar">
+    <div id="hpBarWrap">
+      <div id="hpBar"><div id="hpFill"></div></div>
+      <div id="weaponLabel">Tabanca</div>
+    </div>
+  </div>
+</div>
+
+<div id="overlay" class="hidden">
+  <div id="overlayText"></div>
+  <div id="overlaySub"></div>
+</div>
+
+<div id="touchControls">
+  <div id="joystick"><div id="joystickKnob"></div></div>
+  <div id="shootBtn">ATEŞ</div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="client.js"></script>
+</body>
+</html>
